@@ -1,0 +1,7 @@
+{
+    "C_Cpp.autoAddFileAssociations": false,
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/libjpeg/mozjpeg",
+        "${workspaceFolder}/libjpeg/mozjpeg-build"
+    ]
+}
