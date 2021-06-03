@@ -15,7 +15,7 @@ int main()
               src.info.max_h_samp_factor, src.info.min_DCT_h_scaled_size,
               src.info.max_v_samp_factor, src.info.min_DCT_v_scaled_size);
 
-       libjpeg_prepare_dst_like_src(&src, &dst, 555, 555, "d1.jpeg", TRUE, TRUE);
+       libjpeg_prepare_dst_like_src(&src, &dst, 555, 555, "d2.jpg", TRUE, TRUE);
 
        libjpeg_copy_region(&src, &dst, 333, 333, 333, 555, 111, 111);
 
