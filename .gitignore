@@ -1,0 +1,9 @@
+*.jpg
+*.out
+juncrop
+tests
+build
+libjpeg
+# libjpeg/mozjpeg-build
+libjpeg/IJG-selected
+*.o
