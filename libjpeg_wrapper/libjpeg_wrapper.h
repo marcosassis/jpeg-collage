@@ -2,12 +2,41 @@
 #define LIBJPEG_WRAPPER_H
 #include "libjpeg_wrapper_include.h"
 
+#define LIBJPEG_AUX_FIELDS          \
+    FILE *fp;                       \
+    jvirt_barray_ptr *coef_arrays;  \
+    struct jpeg_error_mgr err_mgr;  \
+    JDIMENSION width;               \
+    JDIMENSION height;              \
+    JDIMENSION width_in_iMCUs;      \
+    JDIMENSION height_in_iMCUs;     \
+    int num_components
+
+typedef struct
+{
+    LIBJPEG_AUX_FIELDS;
+    struct jpeg_common_struct info;
+} libjpeg_common_struct;
+
+typedef struct
+{
+    LIBJPEG_AUX_FIELDS;
+    struct jpeg_decompress_struct info;
+} libjpeg_src_struct;
+
+typedef struct
+{
+    LIBJPEG_AUX_FIELDS;
+    struct jpeg_compress_struct info;
+} libjpeg_dst_struct;
+
+/* 
 typedef struct
 {
     FILE *fp;
     jvirt_barray_ptr *coef_arrays;
     struct jpeg_error_mgr err_mgr;
-    struct jpeg_common_struct info; /* this struct is like the base class */
+    struct jpeg_common_struct info;
 } libjpeg_common_struct;
 
 typedef struct
@@ -15,7 +44,7 @@ typedef struct
     FILE *fp;
     jvirt_barray_ptr *coef_arrays;
     struct jpeg_error_mgr err_mgr;
-    struct jpeg_decompress_struct info; /* this struct can be casted to common */
+    struct jpeg_decompress_struct info;
 } libjpeg_src_struct;
 
 typedef struct
@@ -23,8 +52,9 @@ typedef struct
     FILE *fp;
     jvirt_barray_ptr *coef_arrays;
     struct jpeg_error_mgr err_mgr;
-    struct jpeg_compress_struct info; /* common fields must be exactly the same */
+    struct jpeg_compress_struct info;
 } libjpeg_dst_struct;
+*/
 
 void libjpeg_open_src_file(libjpeg_src_struct *src, char *file_path);
 void libjpeg_open_dst_file(libjpeg_dst_struct *dst, char *file_path);

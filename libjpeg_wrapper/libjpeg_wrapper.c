@@ -19,10 +19,6 @@ void libjpeg_prepare_dst_like_src(libjpeg_src_struct *src, libjpeg_dst_struct *d
         libjpeg_copy_markers_execute(&src->info, &dst->info);
 }
 
-
-
-
-
 void libjpeg_setup_std_error(libjpeg_common_struct *img, int trace_level)
 {
     img->info.err = jpeg_std_error(&img->err_mgr);
@@ -74,6 +70,15 @@ void libjpeg_read_src_core(j_decompress_ptr src_info)
 {
     (void)jpeg_read_header(src_info, TRUE);
     jpeg_core_output_dimensions(src_info);
+
+    int num_components = src_info->num_components;
+    JDIMENSION width = src_info->image_width;
+    JDIMENSION height = src_info->image_height;
+    JDIMENSION width2 = src_info->output_width;
+    JDIMENSION height2 = src_info->output_height;
+    JDIMENSION width_in_iMCUs = LIBJPEG_in_iMUCs_horizontal(src_info, width);
+    JDIMENSION height_in_iMCUs = LIBJPEG_in_iMUCs_vertical(src_info, height);
+    jpeg_component_info *comp_info = src_info->comp_info;
 }
 
 void libjpeg_read_src(libjpeg_src_struct *src, char *input_path,
